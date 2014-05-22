@@ -287,7 +287,7 @@ class stampa_stat_dinamicodet(osv.osv_memory):
 
     _defaults={
                   'dadata':lambda *a: time.strftime('%Y-%m-%d %H:%M:%S'),
-                  'adata':'2099-12-31',
+                  'adata':'2099-12-31 23:59:59',
                 }
 
 

@@ -12,7 +12,9 @@
                         <field name="magazzino_id" colspan="4"/>
                         <field name="categoria_id" colspan="4"/>
                         <field name="articolo_id" colspan="4"/>
-                        <field name="export_csv"/>	
+			<!--
+                        <field name="export_csv"/>
+			-->
                         <separator colspan="4"/>
                         <group col="4" colspan="4">
                             <button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
