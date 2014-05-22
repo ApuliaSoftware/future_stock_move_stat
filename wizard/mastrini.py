@@ -129,7 +129,7 @@ class tempstatistiche_dinamicodet(osv.osv):
                 #entrate = uscite = 0
                 cliente = doc = ''
                 #esistenza = product.qty_available
-                cerca_move = [('product_id','=',product.id),('state','in',('waiting','confirmed','assigned')),('date','<=',p_adata),('date','>=',p_dadata)]
+                cerca_move = [('product_id','=',product.id),('state','in',('waiting','confirmed','assigned'))] # ('date','<=',p_adata),('date','>=',p_dadata)
                 move_ids = move_obj.search(cr, uid, cerca_move, context=context)
                 escludi = []
 
@@ -280,11 +280,6 @@ class stampa_stat_dinamicodet(osv.osv_memory):
         return
 
 
-    def view_init(self, cr, uid, fields_list, context=None):
-
-        res = super(stampa_ordini, self).view_init(cr, uid, fields_list, context=context)
-
-        return res
 
 
     def default_get(self, cr, uid, fields, context=None):
