@@ -153,7 +153,7 @@ class tempstatistiche_dinamicodet(osv.osv):
                                        'p_articolo_name':parametri.articolo_id.name_template,
 
                                        'articolo_id':product.id,
-                                       'desc':normalize('NFKD', product.default_code).encode('ascii','ignore')+ '-'+normalize('NFKD', product.name).encode('ascii','ignore'),
+                                       'desc':unicodedata.normalize('NFKD', product.default_code).encode('ascii','ignore')+ '-'+unicodedata.normalize('NFKD', product.name).encode('ascii','ignore'),
                                            #~ str(product.default_code)+'-'+str(product.name),
                                        'uom':product.product_tmpl_id.uom_id.id,
                                        'giac_iniz':giac_ini,
