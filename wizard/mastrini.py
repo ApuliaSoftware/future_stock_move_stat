@@ -142,6 +142,10 @@ class tempstatistiche_dinamicodet(osv.osv):
 
                         #~ if move.picking_id.doc_id:
                                 #~ doc = move.picking_id.doc_id.id
+                        descriz = ''
+                        if product.default_code:
+                            descriz += unicodedata.normalize('NFKD', product.default_code or ' ').encode('ascii','ignore')+ '-'
+                        descriz += unicodedata.normalize('NFKD', product.name).encode('ascii','ignore')
                         riga_wr = {
                                        'p_dadata': p_dadata,
                                        'p_adata':p_adata,
@@ -153,7 +157,7 @@ class tempstatistiche_dinamicodet(osv.osv):
                                        'p_articolo_name':parametri.articolo_id.name_template,
 
                                        'articolo_id':product.id,
-                                       'desc':unicodedata.normalize('NFKD', product.default_code or ' ').encode('ascii','ignore')+ '-'+unicodedata.normalize('NFKD', product.name).encode('ascii','ignore'),
+                                       'desc':descriz,
                                            #~ str(product.default_code)+'-'+str(product.name),
                                        'uom':product.product_tmpl_id.uom_id.id,
                                        'giac_iniz':giac_ini,
