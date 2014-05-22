@@ -5,93 +5,93 @@
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[SELECT
-     tempstatistiche_mastriniart."id" AS tempstatistiche_mastriniart_id,
-     tempstatistiche_mastriniart."create_uid" AS tempstatistiche_mastriniart_create_uid,
-     tempstatistiche_mastriniart."create_date" AS tempstatistiche_mastriniart_create_date,
-     tempstatistiche_mastriniart."write_date" AS tempstatistiche_mastriniart_write_date,
-     tempstatistiche_mastriniart."write_uid" AS tempstatistiche_mastriniart_write_uid,
-     tempstatistiche_mastriniart."p_categoria_name" AS tempstatistiche_mastriniart_p_categoria_name,
+     tempstatistiche_dinamicodet."id" AS tempstatistiche_dinamicodet_id,
+     tempstatistiche_dinamicodet."create_uid" AS tempstatistiche_dinamicodet_create_uid,
+     tempstatistiche_dinamicodet."create_date" AS tempstatistiche_dinamicodet_create_date,
+     tempstatistiche_dinamicodet."write_date" AS tempstatistiche_dinamicodet_write_date,
+     tempstatistiche_dinamicodet."write_uid" AS tempstatistiche_dinamicodet_write_uid,
+     tempstatistiche_dinamicodet."p_categoria_name" AS tempstatistiche_dinamicodet_p_categoria_name,
 
-     tempstatistiche_mastriniart."p_magazzino_id" AS tempstatistiche_mastriniart_p_magazzino_id,
+     tempstatistiche_dinamicodet."p_magazzino_id" AS tempstatistiche_dinamicodet_p_magazzino_id,
 
-     tempstatistiche_mastriniart."data_doc" AS tempstatistiche_mastriniart_data_doc,
-     tempstatistiche_mastriniart."articolo_id" AS tempstatistiche_mastriniart_articolo_id,
-     tempstatistiche_mastriniart."p_magazzino_name" AS tempstatistiche_mastriniart_p_magazzino_name,
-     tempstatistiche_mastriniart."p_articolo_name" AS tempstatistiche_mastriniart_p_articolo_name,
-     tempstatistiche_mastriniart."num_doc" AS tempstatistiche_mastriniart_num_doc,
-     tempstatistiche_mastriniart."p_categoria_id" AS tempstatistiche_mastriniart_p_categoria_id,
-     tempstatistiche_mastriniart."desc" AS tempstatistiche_mastriniart_desc,
-     tempstatistiche_mastriniart."p_export_csv" AS tempstatistiche_mastriniart_p_export_csv,
-     tempstatistiche_mastriniart."p_adata" AS tempstatistiche_mastriniart_p_adata,
-     tempstatistiche_mastriniart."giac_finale" AS tempstatistiche_mastriniart_giac_finale,
-     tempstatistiche_mastriniart."giac_iniz" AS tempstatistiche_mastriniart_giac_iniz,
-     tempstatistiche_mastriniart."valore" AS tempstatistiche_mastriniart_valore,
-     tempstatistiche_mastriniart."p_articolo_id" AS tempstatistiche_mastriniart_p_articolo_id,
-     tempstatistiche_mastriniart."doc_id" AS tempstatistiche_mastriniart_doc_id,
-     tempstatistiche_mastriniart."uom" AS tempstatistiche_mastriniart_uom,
-     tempstatistiche_mastriniart."p_dadata" AS tempstatistiche_mastriniart_p_dadata,
-     tempstatistiche_mastriniart."qta_mov" AS tempstatistiche_mastriniart_qta_mov,
-     tempstatistiche_mastriniart."move_id" AS tempstatistiche_mastriniart_move_id,
-     tempstatistiche_mastriniart."desc_move" AS tempstatistiche_mastriniart_desc_move,
-     tempstatistiche_mastriniart."data_move" AS tempstatistiche_mastriniart_data_move,
+     tempstatistiche_dinamicodet."data_doc" AS tempstatistiche_dinamicodet_data_doc,
+     tempstatistiche_dinamicodet."articolo_id" AS tempstatistiche_dinamicodet_articolo_id,
+     tempstatistiche_dinamicodet."p_magazzino_name" AS tempstatistiche_dinamicodet_p_magazzino_name,
+     tempstatistiche_dinamicodet."p_articolo_name" AS tempstatistiche_dinamicodet_p_articolo_name,
+     tempstatistiche_dinamicodet."num_doc" AS tempstatistiche_dinamicodet_num_doc,
+     tempstatistiche_dinamicodet."p_categoria_id" AS tempstatistiche_dinamicodet_p_categoria_id,
+     tempstatistiche_dinamicodet."desc" AS tempstatistiche_dinamicodet_desc,
+     tempstatistiche_dinamicodet."p_export_csv" AS tempstatistiche_dinamicodet_p_export_csv,
+     tempstatistiche_dinamicodet."p_adata" AS tempstatistiche_dinamicodet_p_adata,
+     tempstatistiche_dinamicodet."giac_finale" AS tempstatistiche_dinamicodet_giac_finale,
+     tempstatistiche_dinamicodet."giac_iniz" AS tempstatistiche_dinamicodet_giac_iniz,
+     tempstatistiche_dinamicodet."valore" AS tempstatistiche_dinamicodet_valore,
+     tempstatistiche_dinamicodet."p_articolo_id" AS tempstatistiche_dinamicodet_p_articolo_id,
+     tempstatistiche_dinamicodet."doc_id" AS tempstatistiche_dinamicodet_doc_id,
+     tempstatistiche_dinamicodet."uom" AS tempstatistiche_dinamicodet_uom,
+     tempstatistiche_dinamicodet."p_dadata" AS tempstatistiche_dinamicodet_p_dadata,
+     tempstatistiche_dinamicodet."qta_mov" AS tempstatistiche_dinamicodet_qta_mov,
+     tempstatistiche_dinamicodet."move_id" AS tempstatistiche_dinamicodet_move_id,
+     tempstatistiche_dinamicodet."desc_move" AS tempstatistiche_dinamicodet_desc_move,
+     tempstatistiche_dinamicodet."data_move" AS tempstatistiche_dinamicodet_data_move,
      product_uom."name" AS product_uom_name,
-     tempstatistiche_mastriniart."cliente" AS tempstatistiche_mastriniart_cliente,
-     tempstatistiche_mastriniart."entrate" AS tempstatistiche_mastriniart_entrate,
-     tempstatistiche_mastriniart."uscite" AS tempstatistiche_mastriniart_uscite,
-     tempstatistiche_mastriniart."saldo" AS tempstatistiche_mastriniart_saldo
+     tempstatistiche_dinamicodet."cliente" AS tempstatistiche_dinamicodet_cliente,
+     tempstatistiche_dinamicodet."entrate" AS tempstatistiche_dinamicodet_entrate,
+     tempstatistiche_dinamicodet."uscite" AS tempstatistiche_dinamicodet_uscite,
+     tempstatistiche_dinamicodet."saldo" AS tempstatistiche_dinamicodet_saldo
 FROM
-     "public"."product_uom" product_uom RIGHT OUTER JOIN "public"."tempstatistiche_mastriniart" tempstatistiche_mastriniart ON product_uom."id" = tempstatistiche_mastriniart."uom"
+     "public"."product_uom" product_uom RIGHT OUTER JOIN "public"."tempstatistiche_dinamicodet" tempstatistiche_dinamicodet ON product_uom."id" = tempstatistiche_dinamicodet."uom"
 ORDER BY
-     tempstatistiche_mastriniart."articolo_id" ASC, tempstatistiche_mastriniart."data_move" ASC,
-     tempstatistiche_mastriniart."move_id" ASC]]>
+     tempstatistiche_dinamicodet."articolo_id" ASC, tempstatistiche_dinamicodet."data_move" ASC,
+     tempstatistiche_dinamicodet."move_id" ASC]]>
 	</queryString>
-	<field name="tempstatistiche_mastriniart_id" class="java.lang.Integer"/>
-	<field name="tempstatistiche_mastriniart_create_uid" class="java.lang.Integer"/>
-	<field name="tempstatistiche_mastriniart_create_date" class="java.sql.Timestamp"/>
-	<field name="tempstatistiche_mastriniart_write_date" class="java.sql.Timestamp"/>
-	<field name="tempstatistiche_mastriniart_write_uid" class="java.lang.Integer"/>
-	<field name="tempstatistiche_mastriniart_p_categoria_name" class="java.lang.String"/>
-	<field name="tempstatistiche_mastriniart_p_magazzino_id" class="java.lang.Integer"/>
-	<field name="tempstatistiche_mastriniart_data_doc" class="java.sql.Date"/>
-	<field name="tempstatistiche_mastriniart_articolo_id" class="java.lang.Integer"/>
-	<field name="tempstatistiche_mastriniart_p_magazzino_name" class="java.lang.String"/>
-	<field name="tempstatistiche_mastriniart_p_articolo_name" class="java.lang.String"/>
-	<field name="tempstatistiche_mastriniart_num_doc" class="java.lang.String"/>
-	<field name="tempstatistiche_mastriniart_p_categoria_id" class="java.lang.Integer"/>
-	<field name="tempstatistiche_mastriniart_desc" class="java.lang.String"/>
-	<field name="tempstatistiche_mastriniart_p_export_csv" class="java.lang.String"/>
-	<field name="tempstatistiche_mastriniart_p_adata" class="java.sql.Timestamp"/>
-	<field name="tempstatistiche_mastriniart_giac_finale" class="java.math.BigDecimal"/>
-	<field name="tempstatistiche_mastriniart_giac_iniz" class="java.math.BigDecimal"/>
-	<field name="tempstatistiche_mastriniart_valore" class="java.math.BigDecimal"/>
-	<field name="tempstatistiche_mastriniart_p_articolo_id" class="java.lang.Integer"/>
-	<field name="tempstatistiche_mastriniart_doc_id" class="java.lang.Integer"/>
-	<field name="tempstatistiche_mastriniart_uom" class="java.lang.Integer"/>
-	<field name="tempstatistiche_mastriniart_p_dadata" class="java.sql.Timestamp"/>
-	<field name="tempstatistiche_mastriniart_qta_mov" class="java.math.BigDecimal"/>
-	<field name="tempstatistiche_mastriniart_move_id" class="java.lang.Integer"/>
-	<field name="tempstatistiche_mastriniart_desc_move" class="java.lang.String"/>
-	<field name="tempstatistiche_mastriniart_data_move" class="java.sql.Date"/>
+	<field name="tempstatistiche_dinamicodet_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_dinamicodet_create_uid" class="java.lang.Integer"/>
+	<field name="tempstatistiche_dinamicodet_create_date" class="java.sql.Timestamp"/>
+	<field name="tempstatistiche_dinamicodet_write_date" class="java.sql.Timestamp"/>
+	<field name="tempstatistiche_dinamicodet_write_uid" class="java.lang.Integer"/>
+	<field name="tempstatistiche_dinamicodet_p_categoria_name" class="java.lang.String"/>
+	<field name="tempstatistiche_dinamicodet_p_magazzino_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_dinamicodet_data_doc" class="java.sql.Date"/>
+	<field name="tempstatistiche_dinamicodet_articolo_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_dinamicodet_p_magazzino_name" class="java.lang.String"/>
+	<field name="tempstatistiche_dinamicodet_p_articolo_name" class="java.lang.String"/>
+	<field name="tempstatistiche_dinamicodet_num_doc" class="java.lang.String"/>
+	<field name="tempstatistiche_dinamicodet_p_categoria_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_dinamicodet_desc" class="java.lang.String"/>
+	<field name="tempstatistiche_dinamicodet_p_export_csv" class="java.lang.String"/>
+	<field name="tempstatistiche_dinamicodet_p_adata" class="java.sql.Timestamp"/>
+	<field name="tempstatistiche_dinamicodet_giac_finale" class="java.math.BigDecimal"/>
+	<field name="tempstatistiche_dinamicodet_giac_iniz" class="java.math.BigDecimal"/>
+	<field name="tempstatistiche_dinamicodet_valore" class="java.math.BigDecimal"/>
+	<field name="tempstatistiche_dinamicodet_p_articolo_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_dinamicodet_doc_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_dinamicodet_uom" class="java.lang.Integer"/>
+	<field name="tempstatistiche_dinamicodet_p_dadata" class="java.sql.Timestamp"/>
+	<field name="tempstatistiche_dinamicodet_qta_mov" class="java.math.BigDecimal"/>
+	<field name="tempstatistiche_dinamicodet_move_id" class="java.lang.Integer"/>
+	<field name="tempstatistiche_dinamicodet_desc_move" class="java.lang.String"/>
+	<field name="tempstatistiche_dinamicodet_data_move" class="java.sql.Date"/>
 	<field name="product_uom_name" class="java.lang.String"/>
-	<field name="tempstatistiche_mastriniart_cliente" class="java.lang.String"/>
-	<field name="tempstatistiche_mastriniart_entrate" class="java.math.BigDecimal"/>
-	<field name="tempstatistiche_mastriniart_uscite" class="java.math.BigDecimal"/>
-	<field name="tempstatistiche_mastriniart_saldo" class="java.math.BigDecimal"/>
+	<field name="tempstatistiche_dinamicodet_cliente" class="java.lang.String"/>
+	<field name="tempstatistiche_dinamicodet_entrate" class="java.math.BigDecimal"/>
+	<field name="tempstatistiche_dinamicodet_uscite" class="java.math.BigDecimal"/>
+	<field name="tempstatistiche_dinamicodet_saldo" class="java.math.BigDecimal"/>
 	<variable name="aumenti" class="java.math.BigDecimal" resetType="Group" resetGroup="product" calculation="Sum">
-		<variableExpression><![CDATA[$F{tempstatistiche_mastriniart_entrate}]]></variableExpression>
+		<variableExpression><![CDATA[$F{tempstatistiche_dinamicodet_entrate}]]></variableExpression>
 	</variable>
 	<variable name="decrementi" class="java.math.BigDecimal" resetType="Group" resetGroup="product" calculation="Sum">
-		<variableExpression><![CDATA[$F{tempstatistiche_mastriniart_uscite}]]></variableExpression>
+		<variableExpression><![CDATA[$F{tempstatistiche_dinamicodet_uscite}]]></variableExpression>
 	</variable>
 	<variable name="variable1" class="java.lang.String"/>
 	<variable name="decrementi_gen" class="java.math.BigDecimal" calculation="Sum">
-		<variableExpression><![CDATA[$F{tempstatistiche_mastriniart_uscite}]]></variableExpression>
+		<variableExpression><![CDATA[$F{tempstatistiche_dinamicodet_uscite}]]></variableExpression>
 	</variable>
 	<variable name="aumenti_gen" class="java.math.BigDecimal" calculation="Sum">
-		<variableExpression><![CDATA[$F{tempstatistiche_mastriniart_entrate}]]></variableExpression>
+		<variableExpression><![CDATA[$F{tempstatistiche_dinamicodet_entrate}]]></variableExpression>
 	</variable>
 	<group name="product" isStartNewPage="true" isReprintHeaderOnEachPage="true">
-		<groupExpression><![CDATA[$F{tempstatistiche_mastriniart_articolo_id}]]></groupExpression>
+		<groupExpression><![CDATA[$F{tempstatistiche_dinamicodet_articolo_id}]]></groupExpression>
 		<groupHeader>
 			<band height="36">
 				<textField>
@@ -99,14 +99,14 @@ ORDER BY
 					<textElement verticalAlignment="Middle">
 						<font size="11" isBold="true" isItalic="true"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_desc}]]></textFieldExpression>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_dinamicodet_desc}]]></textFieldExpression>
 				</textField>
 				<textField pattern="#,##0.000">
 					<reportElement mode="Opaque" x="693" y="0" width="109" height="20" forecolor="#ECF347" backcolor="#090AFC"/>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="11" isBold="true" isItalic="true"/>
 					</textElement>
-					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_mastriniart_giac_iniz}]]></textFieldExpression>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_dinamicodet_giac_iniz}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
 					<reportElement mode="Opaque" x="648" y="0" width="45" height="20" forecolor="#ECF347" backcolor="#090AFC"/>
@@ -164,7 +164,7 @@ ORDER BY
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font size="11" isBold="true" isItalic="true"/>
 					</textElement>
-					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_mastriniart_giac_finale}]]></textFieldExpression>
+					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_dinamicodet_giac_finale}]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="0" y="0" width="802" height="1"/>
@@ -262,14 +262,14 @@ ORDER BY
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_p_dadata}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_dinamicodet_p_dadata}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="340" y="0" width="140" height="15"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_p_adata}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_dinamicodet_p_adata}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="25" width="126" height="15"/>
@@ -283,7 +283,7 @@ ORDER BY
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_p_magazzino_name}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_dinamicodet_p_magazzino_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="40" width="126" height="15"/>
@@ -304,14 +304,14 @@ ORDER BY
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_p_articolo_name}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_dinamicodet_p_articolo_name}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="131" y="55" width="671" height="15"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_p_categoria_name}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_dinamicodet_p_categoria_name}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
@@ -346,17 +346,17 @@ ORDER BY
 			<textField pattern="#,##0.0000" isBlankWhenNull="true">
 				<reportElement x="746" y="0" width="56" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_mastriniart_saldo}]]></textFieldExpression>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_dinamicodet_saldo}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy">
 				<reportElement x="0" y="0" width="85" height="15"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression class="java.util.Date"><![CDATA[$F{tempstatistiche_mastriniart_data_move}]]></textFieldExpression>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{tempstatistiche_dinamicodet_data_move}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="85" y="0" width="251" height="15"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_desc_move}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_dinamicodet_desc_move}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="612" y="0" width="41" height="15"/>
@@ -366,12 +366,12 @@ ORDER BY
 			<textField pattern="#,##0.0000" isBlankWhenNull="true">
 				<reportElement x="653" y="0" width="69" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_mastriniart_uscite}]]></textFieldExpression>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_dinamicodet_uscite}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.0000" isBlankWhenNull="true">
 				<reportElement x="545" y="0" width="65" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_mastriniart_entrate}]]></textFieldExpression>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{tempstatistiche_dinamicodet_entrate}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="493" y="0" width="52" height="15"/>
@@ -381,7 +381,7 @@ ORDER BY
 			<textField>
 				<reportElement x="336" y="0" width="157" height="15"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_mastriniart_cliente}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_dinamicodet_cliente}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
