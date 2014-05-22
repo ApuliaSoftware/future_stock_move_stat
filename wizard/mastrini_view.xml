@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+    	<record id="view_stampa_dinamico_det" model="ir.ui.view">
+            <field name="name">Stampa Dinamico Dettagliato Articoli</field>
+            <field name="model">stampa.stat.dinamicodet</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                    <form string="Parametri di Stampa"  >
+                        <field name="dadata" colspan="4" />
+                        <field name="adata" colspan="4" />
+                        <field name="magazzino_id" colspan="4"/>
+                        <field name="categoria_id" colspan="4"/>
+                        <field name="articolo_id" colspan="4"/>
+                        <field name="export_csv"/>	
+                        <separator colspan="4"/>
+                        <group col="4" colspan="4">
+                            <button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+                            <button icon="gtk-print" name="check_report" string="Stampa" type="object" colspan="2" default_focus="1" />
+                        </group>
+                    </form>
+                
+            </field>
+        </record>
+    
+    	<act_window name="Stampa Dinamico Dettagliato Articoli"
+			view_mode="form"
+			target="new"
+            key2="client_action_multi"
+			res_model="stampa.stat.dinamicodet"
+			src_model="stampa.stat.dinamicodet"
+			id="act_view_stampa_dinamico_det"/>
+			
+		
+		<menuitem action="act_view_stampa_dinamico_det"
+			  id="menu_stampa_dinamico_det" 
+			  name="Stampa Dinamico Dettagliato Articoli" 
+			  parent="stock.menu_stock_inventory_control" 
+			  />
+			  
+			  
+		<record id="wizard_generacsvdinamicoart" model="ir.ui.view">
+            <field name="name">Genera File Csv Dinamico Dett. Articoli</field>
+            <field name="model">crea_csv_dinamicodet_art</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Genera File Csv Dinamico  Articoli">
+                    <group col="4">
+                        <group colspan="4" >
+                            <newline />
+                            <button icon="gtk-cancel" special="cancel" string="Cancel"/>
+                            <button icon="gtk-ok" name="generacsvmastriniart" string="Export" type="object"/>
+                        </group>
+                        <group colspan="4">
+                            <field name="data" readonly="1"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>			
+        
+       <act_window name="Genera File Csv Dinamico Dett Articoli"
+            res_model="crea_csv_dinamicodet_art"
+            src_model="crea_csv_dinamicodet_art"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"
+            id="action_wizard_generacsvdinamico"
+            view_id="wizard_generacsvdinamicoart"/>
+            
+    </data>
+</openerp>
+    
