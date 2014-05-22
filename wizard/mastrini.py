@@ -43,7 +43,6 @@ class tempstatistiche_dinamicodet(osv.osv):
                 'desc_move':fields.char('Descrizione', size= 50),
                 'qta_mov':fields.float('Quantita', digits=(25,4)),
                 'data_move':fields.date('DataMovimento'),
-
                 'giac_finale':fields.float('Giacenza Finale', digits=(25,4)),
                 'doc_id':fields.many2one('account.invoice', 'Documento'),
                 'num_doc':fields.char('Numero Documento', size= 50),
@@ -140,8 +139,8 @@ class tempstatistiche_dinamicodet(osv.osv):
                         if move.picking_id.partner_id:
                                 cliente = move.picking_id.partner_id.name
 
-                        if move.picking_id.doc_id:
-                                doc = move.picking_id.doc_id.id
+                        #~ if move.picking_id.doc_id:
+                                #~ doc = move.picking_id.doc_id.id
                         riga_wr = {
                                        'p_dadata': p_dadata,
                                        'p_adata':p_adata,
