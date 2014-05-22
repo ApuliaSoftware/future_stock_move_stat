@@ -285,11 +285,6 @@ ORDER BY
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{tempstatistiche_dinamicodet_desc_move}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="612" y="0" width="41" height="15"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{product_uom_name}]]></textFieldExpression>
-			</textField>
 			<textField pattern="#,##0.0000" isBlankWhenNull="true">
 				<reportElement x="653" y="0" width="69" height="15"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>

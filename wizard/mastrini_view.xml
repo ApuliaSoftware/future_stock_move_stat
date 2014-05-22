@@ -2,7 +2,7 @@
 <openerp>
     <data>
     	<record id="view_stampa_dinamico_det" model="ir.ui.view">
-            <field name="name">Stampa Dinamico Dettagliato Articoli</field>
+            <field name="name">Analisi Disponibilita</field>
             <field name="model">stampa.stat.dinamicodet</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
@@ -23,7 +23,7 @@
             </field>
         </record>
     
-    	<act_window name="Stampa Dinamico Dettagliato Articoli"
+    	<act_window name="Analisi Disponibilita"
 			view_mode="form"
 			target="new"
             key2="client_action_multi"
@@ -34,13 +34,13 @@
 		
 		<menuitem action="act_view_stampa_dinamico_det"
 			  id="menu_stampa_dinamico_det" 
-			  name="Stampa Dinamico Dettagliato Articoli" 
+			  name="Analisi Disponibilita" 
 			  parent="stock.menu_stock_inventory_control" 
 			  />
 			  
 			  
 		<record id="wizard_generacsvdinamicoart" model="ir.ui.view">
-            <field name="name">Genera File Csv Dinamico Dett. Articoli</field>
+            <field name="name">Genera File Csv Analisi Disponibilita</field>
             <field name="model">crea_csv_dinamicodet_art</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
@@ -59,7 +59,7 @@
             </field>
         </record>			
         
-       <act_window name="Genera File Csv Dinamico Dett Articoli"
+       <act_window name="Genera File Csv Analisi Disponibilita"
             res_model="crea_csv_dinamicodet_art"
             src_model="crea_csv_dinamicodet_art"
             view_mode="form"

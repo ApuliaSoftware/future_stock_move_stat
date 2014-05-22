@@ -56,30 +56,32 @@ class tempstatistiche_dinamicodet(osv.osv):
                 'saldo':fields.float('Saldo', digits=(25,4)),
 
                 }
-
-    def default_get(self, cr, uid, fields, context=None):
-        oggi = dt.datetime
-        data = oggi.today()
-        anno = str(data.year)
-        mese = str(data.month)
-        mese = mese.rjust(2,"0")
-        giorno = str(data.day).rjust(2,"0")
-        
-        gg = "31"
-        if mese in "04-06-09-11" :
-            gg = "30"
-        if mese == "02":
-            gg = "28"
-        da_data = anno+"-"+mese+"-"+giorno+' 00:00:00'
-        a_data = '2099-12-31 23:59:59'
-        return {'p_dadata':da_data, "p_adata":a_data}
+                
+    #~ def default_get(self, cr, uid, fields, context=None):
+        #~ oggi = dt.datetime
+        #~ data = oggi.today()
+                                    #~ datetime.strptime(date_ref, '%Y-%m-%d %H:%M:%S' +
+                            #~ relativedelta(days=line.start_day, months=1))
+#~ 
+        #~ anno = str(data.year)
+        #~ mese = str(data.month)
+        #~ mese = mese.rjust(2,"0")
+        #~ giorno = str(data.day).rjust(2,"0")
+        #~ 
+        #~ gg = "31"
+        #~ if mese in "04-06-09-11" :
+            #~ gg = "30"
+        #~ if mese == "02":
+            #~ gg = "28"
+        #~ da_data = anno+"-"+mese+"-"+giorno+' 00:00:00'
+        #~ a_data = '2099-12-31 23:59:59'
+        #~ return {'p_dadata':da_data, "p_adata":a_data}
 
     _order = 'articolo_id, data_move'
 
 
     def mappa_categoria(self, cr, uid, categoria, context):
             lista_id=[]
-
         #for categ in categoria.categoria_id:
             lista_id.append(categoria.categoria_id.id)
             #import pdb;pdb.set_trace()
@@ -283,25 +285,30 @@ class stampa_stat_dinamicodet(osv.osv_memory):
 
         return
 
+    _defaults={
+                  'p_dadata'=lambda *a: time.strftime('%Y-%m-%d %H:%M:%S'),
+                  'p_adata'='2099-12-31',
+                }
 
 
 
-    def default_get(self, cr, uid, fields, context=None):
-        oggi = dt.datetime
-        data = oggi.today()
-        anno = str(data.year)
-        mese = str(data.month)
-        mese = mese.rjust(2,"0")
-        giorno = str(data.day).rjust(2,"0")
-        
-        gg = "31"
-        if mese in "04-06-09-11" :
-            gg = "30"
-        if mese == "02":
-            gg = "28"
-        da_data = anno+"-"+mese+"-"+giorno+' 00:00:00'
-        a_data = '2099-12-31 23:59:59'
-        return {'p_dadata':da_data, "p_adata":a_data}
+
+    #~ def default_get(self, cr, uid, fields, context=None):
+        #~ oggi = dt.datetime
+        #~ data = oggi.today()
+        #~ anno = str(data.year)
+        #~ mese = str(data.month)
+        #~ mese = mese.rjust(2,"0")
+        #~ giorno = str(data.day).rjust(2,"0")
+        #~ 
+        #~ gg = "31"
+        #~ if mese in "04-06-09-11" :
+            #~ gg = "30"
+        #~ if mese == "02":
+            #~ gg = "28"
+        #~ da_data = anno+"-"+mese+"-"+giorno+' 00:00:00'
+        #~ a_data = '2099-12-31 23:59:59'
+        #~ return {'p_dadata':da_data, "p_adata":a_data}
 
 
 stampa_stat_dinamicodet()
