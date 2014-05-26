@@ -69,7 +69,21 @@
             key2="client_action_multi"
             id="action_wizard_generacsvdinamico"
             view_id="wizard_generacsvdinamicoart"/>
-            
+
+
+        <record model="ir.ui.view" id="view_product_inout_tree2">
+            <field name="name">res.product.inout.tree2</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <field name='qty_available' position="after">                 
+                    <field name="incoming_qty" />	
+                    <field name="outgoing_qty" />	
+                </field>     
+            </field>
+        </record>        
+
+	    
     </data>
 </openerp>
     
