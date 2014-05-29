@@ -263,15 +263,20 @@ class stampa_stat_dinamicodet(osv.osv_memory):
                 if not move.product_uom.category_id:
                     _logger.info('== Move '+ str(move.id)+' ==')
                 else:
-                    if not move.product_id.uom_id.category_id:
-                        _logger.info('== Product '+ move.product_id.default_code +' ==')
+                    if not move.product_id: #.uom_id.category_id
+                        _logger.info('== Product not fount '+ str(move.id) +' ==')
+                        
                     else:
-                        if move.product_uom.category_id.id <> move.product_id.uom_id.category_id.id:
-                            riga= {
-                                    'product_uom':move.product_id.uom_id.id,
-                                    
-                                    }
-                            ok = self.pool.get('stock.move').write(cr,uid,[move.id],riga)
+                        if not move.product_id.uom_id.category_id:
+                            _logger.info('== Product '+ move.product_id.default_code +' ==')
+                        else:
+                            
+                            if move.product_uom.category_id.id <> move.product_id.uom_id.category_id.id:
+                                riga= {
+                                        'product_uom':move.product_id.uom_id.id,
+                                        
+                                        }
+                                ok = self.pool.get('stock.move').write(cr,uid,[move.id],riga)
         return {'type': 'ir.actions.act_window_close'}
 
 
