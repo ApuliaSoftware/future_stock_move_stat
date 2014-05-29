@@ -260,7 +260,7 @@ class stampa_stat_dinamicodet(osv.osv_memory):
         move_ids = self.pool.get('stock.move').search(cr,uid,[])
         if move_ids:
             for move in self.pool.get('stock.move').browse(cr,uid,move_ids):
-              if not move.product_id: #.uom_id.category_id
+              if move.product_id: #.uom_id.category_id
                 if not move.product_uom.category_id:
                     _logger.info('== Move '+ str(move.id)+' ==')
                 else:
