@@ -223,7 +223,7 @@ class tempstatistiche_dinamicodet(osv.osv):
 
     def check_uom_move(self, cr,uid,parametri,context):
         # aggiungere un bottone al volo se serve nella view di questo  wizard
-        for move in self.pool.get('stock.move').search(cr,ui,[]):
+        for move in self.pool.get('stock.move').search(cr,uid,[]):
             if move.product_uom.category_id.id <> move.product_id.uom_id.category_id.id:
                 riga= {
                         'product_uom':move.product_id.uom_id.id,
