@@ -221,16 +221,6 @@ class tempstatistiche_dinamicodet(osv.osv):
 #                pass
         return
 
-    def check_uom_move(self, cr,uid,parametri,context):
-        # aggiungere un bottone al volo se serve nella view di questo  wizard
-        for move in self.pool.get('stock.move').search(cr,uid,[]):
-            if move.product_uom.category_id.id <> move.product_id.uom_id.category_id.id:
-                riga= {
-                        'product_uom':move.product_id.uom_id.id,
-                        
-                        }
-                ok = self.pool.get('stock.move').write(cr,uid,[move.id],riga)
-        return
 
 
 tempstatistiche_dinamicodet()
@@ -263,6 +253,20 @@ class stampa_stat_dinamicodet(osv.osv_memory):
                 'report_name': 'mastrini',
                 'datas': data,
                 }
+
+    def check_uom_move(self, cr,uid,parametri,context):
+        # aggiungere un bottone al volo se serve nella view di questo  wizard
+        move_ids = self.pool.get('stock.move').search(cr,uid,[])
+        if move_ids:
+            for move in self.pool.get('stock.move').browse(cr,uid,move_ids):
+                if move.product_uom.category_id.id <> move.product_id.uom_id.category_id.id:
+                    riga= {
+                            'product_uom':move.product_id.uom_id.id,
+                            
+                            }
+                    ok = self.pool.get('stock.move').write(cr,uid,[move.id],riga)
+        return {'type': 'ir.actions.act_window_close'}
+
 
     def check_report(self, cr, uid, ids, context=None):
         #
