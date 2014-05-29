@@ -214,19 +214,23 @@ class tempstatistiche_dinamicodet(osv.osv):
                 #import pdb;pdb.set_trace()
                 temp_ids = self.pool.get('tempstatistiche.dinamicodet').search(cr, uid, [('articolo_id','=',product.id)],context=context, order='data_move,move_id')
                 if temp_ids:
-
                     for riga in self.pool.get('tempstatistiche.dinamicodet').browse(cr, uid, temp_ids):
                         saldo += riga.entrate - riga.uscite
                         riga_up['saldo']=saldo
                         ok= self.write(cr, uid, riga.id, riga_up)
-
-
-
-
 #                pass
         return
 
-
+    def check_uom_move(self, cr,uid,parametri,context):
+        # aggiungere un bottone al volo se serve nella view di questo  wizard
+        for move in self.pool.get('stock.move').search(cr,ui,[]):
+            if move.product_uom.category_id.id <> move.product_id.uom_id.category_id.id:
+                riga= {
+                        'product_uom':move.product_id.uom_id.id,
+                        
+                        }
+                ok = self.pool.get('stock.move').write(cr,uid,[move.id],riga)
+        return
 
 
 tempstatistiche_dinamicodet()
