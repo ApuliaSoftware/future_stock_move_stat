@@ -14,6 +14,8 @@ from tempfile import TemporaryFile
 import math
 import unicodedata
 import logging
+from copy import deepcopy
+
 _logger = logging.getLogger('Sincronia Stock Move')
 class tempstatistiche_dinamicodet(osv.osv):
 
@@ -57,48 +59,25 @@ class tempstatistiche_dinamicodet(osv.osv):
                 'saldo':fields.float('Saldo', digits=(25,4)),
 
                 }
-                
-    #~ def default_get(self, cr, uid, fields, context=None):
-        #~ oggi = dt.datetime
-        #~ data = oggi.today()
-                                    #~ datetime.strptime(date_ref, '%Y-%m-%d %H:%M:%S' +
-                            #~ relativedelta(days=line.start_day, months=1))
-#~ 
-        #~ anno = str(data.year)
-        #~ mese = str(data.month)
-        #~ mese = mese.rjust(2,"0")
-        #~ giorno = str(data.day).rjust(2,"0")
-        #~ 
-        #~ gg = "31"
-        #~ if mese in "04-06-09-11" :
-            #~ gg = "30"
-        #~ if mese == "02":
-            #~ gg = "28"
-        #~ da_data = anno+"-"+mese+"-"+giorno+' 00:00:00'
-        #~ a_data = '2099-12-31 23:59:59'
-        #~ return {'p_dadata':da_data, "p_adata":a_data}
 
     _order = 'articolo_id, data_move'
 
 
     def mappa_categoria(self, cr, uid, categoria, context):
-            lista_id=[]
-        #for categ in categoria.categoria_id:
-            lista_id.append(categoria.categoria_id.id)
-            #import pdb;pdb.set_trace()
-            if categoria.categoria_id.child_id:
-                for child in categoria.categoria_id.child_id:
-                    lista_id.append(child.id)
-                    if child.child_id:
-                        for figlio in child.child_id:
-                            lista_id.append(figlio.id)
-            return lista_id
+        lista_id=[]
+        lista_id.append(categoria.categoria_id.id)
+        if categoria.categoria_id.child_id:
+            for child in categoria.categoria_id.child_id:
+                lista_id.append(child.id)
+                if child.child_id:
+                    for figlio in child.child_id:
+                        lista_id.append(figlio.id)
+        return lista_id
 
     def carica_doc(self, cr,uid,parametri,context):
         ok = self._pulisci(cr, uid, context)
         move_obj=self.pool.get('stock.move')
         cerca = [('type', '<>', 'service')]
-        #context['from_date'] = parametri.dadata
         context['to_date'] = parametri.adata
         context['location']= parametri.magazzino_id.id
         p_dadata = parametri.dadata
@@ -109,29 +88,21 @@ class tempstatistiche_dinamicodet(osv.osv):
         if parametri.articolo_id:
             cerca.append(('id','=',parametri.articolo_id.id))
         if parametri.categoria_id:
-            #TODO RAGIONARE SU CATEGORIE.....
             lista_id=[]
             lista_id = self.mappa_categoria(cr, uid, parametri, context)
             cerca.append(('categ_id','in', lista_id))
 
-#        import pdb;pdb.set_trace()
-
         product_ids = self.pool.get('product.product').search(cr,uid,cerca,context=context)
         uom_obj = self.pool.get('product.uom')
         if product_ids:
-            #product = self.pool.get('product.product').browse(cr,uid,product_ids[0],context=context)
-
             for product in self.pool.get('product.product').browse(cr,uid,product_ids,context=context):
-                #giac_finale = giac_ini = product.qty_available
-#
                 giac_finale = product.qty_available
-                context2=context
-                context2['to_date']=parametri.dadata
+                
+                context2 = deepcopy(context)
+                context2['to_date'] = parametri.dadata
                 giac_ini = self.pool.get('product.product').browse(cr,uid,product.id,context=context2).qty_available
                 saldo = giac_ini
-                #entrate = uscite = 0
                 cliente = doc = ''
-                #esistenza = product.qty_available
                 cerca_move = [('product_id','=',product.id),('state','in',('waiting','confirmed','assigned'))] # ('date','<=',p_adata),('date','>=',p_dadata)
                 move_ids = move_obj.search(cr, uid, cerca_move, context=context)
                 escludi = []
@@ -139,45 +110,38 @@ class tempstatistiche_dinamicodet(osv.osv):
 
                 if move_ids:
                     for move in move_obj.browse(cr, uid, move_ids, context=context):
+                        if move.location_id.id == move.location_dest_id.id:
+                            continue
                         cliente = doc = ''
                         if move.picking_id.partner_id:
                                 cliente = move.picking_id.partner_id.name
-
-                        #~ if move.picking_id.doc_id:
-                                #~ doc = move.picking_id.doc_id.id
                         descriz = ''
                         if product.default_code:
                             descriz += unicodedata.normalize('NFKD', product.default_code or ' ').encode('ascii','ignore')+ '-'
                         descriz += unicodedata.normalize('NFKD', product.name).encode('ascii','ignore')
                         riga_wr = {
-                                       'p_dadata': p_dadata,
-                                       'p_adata':p_adata,
-                                       'p_magazzino_id': parametri.magazzino_id.id,
-                                       'p_magazzino_name':parametri.magazzino_id.complete_name,
-                                       'p_categoria_id':parametri.categoria_id.id,
-                                       'p_categoria_name':parametri.categoria_id.name,
-                                       'p_articolo_id':parametri.articolo_id.id ,
-                                       'p_articolo_name':parametri.articolo_id.name_template,
+                                   'p_dadata': p_dadata,
+                                   'p_adata':p_adata,
+                                   'p_magazzino_id': parametri.magazzino_id.id,
+                                   'p_magazzino_name':parametri.magazzino_id.complete_name,
+                                   'p_categoria_id':parametri.categoria_id.id,
+                                   'p_categoria_name':parametri.categoria_id.name,
+                                   'p_articolo_id':parametri.articolo_id.id ,
+                                   'p_articolo_name':parametri.articolo_id.name_template,
 
-                                       'articolo_id':product.id,
-                                       'desc':descriz,
-                                           #~ str(product.default_code)+'-'+str(product.name),
-                                       'uom':product.product_tmpl_id.uom_id.id,
-                                       'giac_iniz':giac_ini,
+                                   'articolo_id':product.id,
+                                   'desc':descriz,
+                                   'uom':product.product_tmpl_id.uom_id.id,
+                                   'giac_iniz':giac_ini,
 
-                                       'move_id': move.id,
-                                       'desc_move':move.name,
-                                       #'qta_mov': move.product_qty*-1,
-                                       'data_move':move.date,
+                                   'move_id': move.id,
+                                   'desc_move':move.name,
+                                   'data_move':move.date,
 
-                                       'giac_finale': giac_finale, #esistenza - move.product_qty ,
-                                       'cliente':cliente,
+                                   'giac_finale': giac_finale, 
+                                   'cliente':cliente,
 
-                                       'doc_id':doc,
-
-                                       #'num_doc':fields.char('Numero Documento', size= 50),
-                                       #'data_doc':fields.date('Data Documento'),
-                                       #'valore':fields.float('Valore', digits=(25,4))
+                                   'doc_id':doc,
                                }
 
 
@@ -212,14 +176,12 @@ class tempstatistiche_dinamicodet(osv.osv):
                         if uscite <> entrate:
                             ok = self.create(cr,uid,riga_wr)
                 riga_up= {}
-                #import pdb;pdb.set_trace()
                 temp_ids = self.pool.get('tempstatistiche.dinamicodet').search(cr, uid, [('articolo_id','=',product.id)],context=context, order='data_move,move_id')
                 if temp_ids:
                     for riga in self.pool.get('tempstatistiche.dinamicodet').browse(cr, uid, temp_ids):
                         saldo += riga.entrate - riga.uscite
                         riga_up['saldo']=saldo
                         ok= self.write(cr, uid, riga.id, riga_up)
-#                pass
         return
 
 
@@ -307,25 +269,6 @@ class stampa_stat_dinamicodet(osv.osv_memory):
                   'adata':'2099-12-31 23:59:59',
                 }
 
-
-
-
-    #~ def default_get(self, cr, uid, fields, context=None):
-        #~ oggi = dt.datetime
-        #~ data = oggi.today()
-        #~ anno = str(data.year)
-        #~ mese = str(data.month)
-        #~ mese = mese.rjust(2,"0")
-        #~ giorno = str(data.day).rjust(2,"0")
-        #~ 
-        #~ gg = "31"
-        #~ if mese in "04-06-09-11" :
-            #~ gg = "30"
-        #~ if mese == "02":
-            #~ gg = "28"
-        #~ da_data = anno+"-"+mese+"-"+giorno+' 00:00:00'
-        #~ a_data = '2099-12-31 23:59:59'
-        #~ return {'p_dadata':da_data, "p_adata":a_data}
 
 
 stampa_stat_dinamicodet()
