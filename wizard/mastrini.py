@@ -112,6 +112,8 @@ class tempstatistiche_dinamicodet(osv.osv):
                     for move in move_obj.browse(cr, uid, move_ids, context=context):
                         if move.location_id.id == move.location_dest_id.id:
                             continue
+                        if move.type == 'internal':
+                           continue     
                         cliente = doc = ''
                         if move.picking_id.partner_id:
                                 cliente = move.picking_id.partner_id.name
@@ -213,7 +215,7 @@ class stampa_stat_dinamicodet(osv.osv_memory):
         data['form']['parameters'] = {}
 
         return {'type': 'ir.actions.report.xml',
-                'report_name': 'mastrini',
+                'report_name': 'previsionale_mastrini',
                 'datas': data,
                 }
 

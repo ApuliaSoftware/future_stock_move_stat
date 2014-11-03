@@ -3,11 +3,11 @@
 <data >
 	<!-- REPORT  -->
 	<record id="report_mastrini_art" model="ir.actions.report.xml">
-        <field name="name">Mastrino Articolo</field>
+        <field name="name">Analisi Disponibilita</field>
         <field name="type">ir.actions.report.xml</field>
         <field name="model">product.product</field>
-        <field name="report_name">mastrini</field>
-        <field name="report_rml">future_stock_move_stat/report/mastrini.jrxml</field>
+        <field name="report_name">previsionale_mastrini</field>
+        <field name="report_rml">future_stock_move_stat/report/previsionale_mastrini.jrxml</field>
         <field name="report_type">pdf</field>
         <field name="jasper_report">True</field>
         <field name="jasper_output">pdf</field>
